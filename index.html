@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#21172b">
+<title>A Little Surprise for You 💗</title>
+<style>
+:root{--pink:#ff8fb8;--rose:#f8c7d8;--cream:#fff7f2;--ink:#251a2b;--gold:#f4d59a}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#21172b;color:var(--cream);font-family:Georgia,'Times New Roman',serif;overflow-x:hidden}
+button{font:inherit}
+#intro{min-height:100svh;display:grid;place-items:center;padding:28px;position:relative;overflow:hidden;background:radial-gradient(circle at 50% 35%,#5a3455 0,#302039 43%,#1c1525 100%)}
+.glow{position:absolute;width:360px;height:360px;border-radius:50%;background:#ff8fb8;filter:blur(110px);opacity:.17;top:10%;left:calc(50% - 180px)}
+.intro-inner{position:relative;text-align:center;max-width:560px;z-index:1}
+.eyebrow{letter-spacing:.28em;text-transform:uppercase;color:#f4c4d5;font:11px Arial,sans-serif}
+h1{font-size:clamp(2.5rem,9vw,5.2rem);font-weight:normal;line-height:1.03;margin:18px 0;color:#fff3f5}
+h1 span{color:var(--pink);font-style:italic}
+.sub{font:15px/1.7 Arial,sans-serif;color:#e5d5df;max-width:390px;margin:0 auto 30px}
+.gift-wrap{width:180px;height:165px;margin:35px auto 28px;position:relative;cursor:pointer;filter:drop-shadow(0 18px 20px #100b16aa);transition:transform .3s}
+.gift-wrap:hover{transform:translateY(-7px) rotate(-2deg)}
+.gift-box{position:absolute;bottom:0;left:10px;width:160px;height:112px;border-radius:7px;background:linear-gradient(135deg,#f9a4c3,#d9578b);border:1px solid #ffd3df}
+.gift-box:before{content:"";position:absolute;left:67px;top:0;width:25px;height:100%;background:#ffe4a8}
+.gift-lid{position:absolute;left:0;top:39px;width:180px;height:32px;border-radius:6px;background:linear-gradient(135deg,#ffc1d5,#e86d9b);z-index:2;border:1px solid #ffe1e8;transition:transform .9s cubic-bezier(.2,.8,.2,1),top .9s}
+.gift-lid:before{content:"";position:absolute;left:77px;top:0;width:25px;height:100%;background:#ffe4a8}
+.bow{position:absolute;z-index:3;top:5px;left:66px;width:48px;height:38px}
+.bow:before,.bow:after{content:"";position:absolute;width:28px;height:25px;border:8px solid #ffe4a8;border-radius:80% 20% 80% 20%;transform:rotate(28deg)}
+.bow:after{left:22px;transform:scaleX(-1) rotate(28deg)}
+.gift-wrap.open .gift-lid{transform:translate(42px,-90px) rotate(24deg);top:5px}
+.gift-wrap.open .bow{transform:translate(42px,-90px) rotate(24deg);transition:transform .9s}
+.open-btn{border:1px solid #f5b9ce;background:linear-gradient(135deg,#ffb4cd,#e875a0);color:#311b2c;padding:15px 27px;border-radius:999px;font: bold 12px Arial,sans-serif;letter-spacing:.13em;text-transform:uppercase;cursor:pointer;box-shadow:0 8px 30px #e875a044}
+.open-btn:active{transform:scale(.97)}
+.hint{font:11px Arial,sans-serif;color:#bba9b9;margin-top:18px}
+#surprise{display:none;background:linear-gradient(180deg,#2a1c32,#1d1726);padding:0 18px 70px}
+#surprise.show{display:block;animation:fadeIn 1s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.hero{text-align:center;padding:78px 10px 42px;max-width:760px;margin:auto}
+.script{font-style:italic;color:var(--pink);font-size:clamp(1.4rem,5vw,2.2rem)}
+.hero h2{font-size:clamp(2.4rem,8vw,4.8rem);font-weight:normal;line-height:1.04;margin:13px 0}
+.hero p{font:14px/1.8 Arial,sans-serif;color:#e1d4e1;max-width:540px;margin:15px auto}
+.heart{color:#ff9cbd;font-size:22px}
+.section{max-width:1000px;margin:35px auto 0}
+.section-title{text-align:center;font-size:2rem;font-weight:normal;margin:0 0 8px}
+.section-note{text-align:center;color:#cdbacb;font:12px Arial,sans-serif;margin:0 0 24px}
+.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.photo{margin:0;overflow:hidden;border-radius:15px;background:#3a2a40;border:1px solid #ffffff20;box-shadow:0 12px 28px #100b1640}
+.photo img{width:100%;height:100%;max-height:510px;min-height:230px;object-fit:cover;display:block;transition:transform .5s}
+.photo:hover img{transform:scale(1.035)}
+.photo:nth-child(2){margin-top:28px}
+.photo:nth-child(3){margin-top:-28px}
+.videos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.video-card{background:#38283e;padding:8px;border-radius:14px;border:1px solid #ffffff20}
+video{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:9px;background:#130f19;display:block}
+.video-label{text-align:center;font:11px Arial,sans-serif;color:#f2d9e5;padding:10px 2px 4px}
+.letter{max-width:690px;margin:60px auto 0;padding:34px 28px;border:1px solid #e9b6ca66;border-radius:18px;background:linear-gradient(145deg,#ffffff0b,#ffffff03);text-align:center}
+.letter .small{font:10px Arial,sans-serif;letter-spacing:.25em;text-transform:uppercase;color:#e9b6ca}
+.letter h3{font-size:2rem;font-weight:normal;margin:15px 0;color:#fff0f5}
+.letter p{font:15px/1.9 Arial,sans-serif;color:#e8dce7}
+.signature{font-style:italic;color:#ffacc9;font-size:1.35rem;margin-top:20px}
+.footer{text-align:center;color:#bba9b9;font:11px Arial,sans-serif;margin-top:45px}
+.float-heart{position:fixed;bottom:-30px;color:#ff9cbd;pointer-events:none;z-index:4;animation:floatUp 5s linear forwards;opacity:.7}
+@keyframes floatUp{to{transform:translateY(-110vh) rotate(30deg);opacity:0}}
+@media(max-width:650px){.gallery{gap:9px}.photo img{min-height:190px}.videos{grid-template-columns:1fr;max-width:330px;margin:auto}.video-card{padding:7px}.video-card video{aspect-ratio:4/5}.letter{padding:28px 20px}.hero{padding-top:60px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<section id="intro">
+  <div class="glow"></div>
+  <div class="intro-inner">
+    <div class="eyebrow">A tiny surprise, made with love</div>
+    <h1>Hey, <span>Bestie!</span></h1>
+    <p class="sub">Someone has a little something special waiting for you. Ready to open it?</p>
+    <div class="gift-wrap" id="gift" role="button" tabindex="0" aria-label="Open birthday gift">
+      <div class="gift-lid"></div><div class="bow"></div><div class="gift-box"></div>
+    </div>
+    <button class="open-btn" id="openBtn">Open your surprise ✨</button>
+    <div class="hint">Tap the gift or the button</div>
+  </div>
+</section>
+
+<main id="surprise">
+  <header class="hero">
+    <div class="script">Today is all about you...</div>
+    <h2>Happy Birthday,<br><span style="color:#ff9cbd;font-style:italic">Beautiful Soul!</span></h2>
+    <div class="heart">♥ ♥ ♥</div>
+    <p>May your day be filled with the same warmth, laughter and happiness that you bring into the lives of everyone around you.</p>
+  </header>
+
+  <section class="section">
+    <h2 class="section-title">A little gallery of you</h2>
+    <p class="section-note">Some moments are too lovely not to celebrate.</p>
+    <div class="gallery">
+      <figure class="photo"><img src="assets/photo-1.jpg" alt="Birthday memory 1" loading="lazy"></figure>
+      <figure class="photo"><img src="assets/photo-2.jpg" alt="Birthday memory 2" loading="lazy"></figure>
+      <figure class="photo"><img src="assets/photo-3.jpg" alt="Birthday memory 3" loading="lazy"></figure>
+      <figure class="photo"><img src="assets/photo-4.jpg" alt="Birthday memory 4" loading="lazy"></figure>
+      <figure class="photo"><img src="assets/photo-5.jpeg" alt="Birthday memory 5" loading="lazy"></figure>
+      <figure class="photo"><img src="assets/photo-6.jpeg" alt="Birthday memory 6" loading="lazy"></figure>
+      <figure class="photo"><img src="assets/photo-7.jpeg" alt="Birthday memory 7" loading="lazy"></figure>
+      <figure class="photo"><img src="assets/photo-8.jpeg" alt="Birthday memory 8" loading="lazy"></figure>
+      <figure class="photo"><img src="assets/photo-9.jpeg" alt="Birthday memory 9" loading="lazy"></figure>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Little moments, big memories</h2>
+    <p class="section-note">Press play and relive these memories.</p>
+    <div class="videos">
+      <div class="video-card"><video controls playsinline preload="metadata" src="assets/memory-1.mp4"></video><div class="video-label">Memory 1 ♡</div></div>
+      <div class="video-card"><video controls playsinline preload="metadata" src="assets/memory-2.mp4"></video><div class="video-label">Memory 2 ♡</div></div>
+      <div class="video-card"><video controls playsinline preload="metadata" src="assets/memory-3.mp4"></video><div class="video-label">Memory 3 ♡</div></div>
+      <div class="video-card"><video controls playsinline preload="metadata" src="assets/memory-4.mp4"></video><div class="video-label">Memory 4 ♡</div></div>
+      <div class="video-card"><video controls playsinline preload="metadata" src="assets/memory-5.mp4"></video><div class="video-label">Memory 5 ♡</div></div>
+    </div></div>
+      <div class="video-card"><video controls playsinline preload="metadata" src="assets/memory-2.mp4"></video><div class="video-label">Memory two ♡</div></div>
+      <div class="video-card"><video controls playsinline preload="metadata" src="assets/memory-3.mp4"></video><div class="video-label">Memory three ♡</div></div>
+    </div>
+  </section>
+
+  <section class="letter">
+    <div class="small">A birthday note for you</div>
+    <h3>To my forever bestie 💗</h3>
+    <p>Happy Birthday! I hope this new chapter brings you endless reasons to smile, dreams that come true, peaceful days and unforgettable adventures. Keep being your lovely, crazy, wonderful self. You deserve all the happiness in the world — today and always.</p>
+    <p>Thank you for being you. Here's to more laughter, more memories and many more birthdays to celebrate!</p>
+    <div class="signature">With lots of love, your bestie ♡</div>
+  </section>
+  <div class="footer">Made especially for you · Happy Birthday ✨</div>
+</main>
+<script>
+const gift=document.getElementById('gift');
+const button=document.getElementById('openBtn');
+let opened=false;
+function openSurprise(){
+  if(opened)return; opened=true;
+  gift.classList.add('open');
+  button.textContent='Surprise opened 💗';
+  setTimeout(()=>{
+    document.getElementById('intro').style.display='none';
+    const main=document.getElementById('surprise');main.classList.add('show');
+    window.scrollTo({top:0,behavior:'smooth'});
+    for(let i=0;i<18;i++)setTimeout(makeHeart,i*180);
+  },850);
+}
+function makeHeart(){
+  const h=document.createElement('div');h.className='float-heart';h.textContent=['♥','♡','✦'][Math.floor(Math.random()*3)];
+  h.style.left=Math.random()*100+'vw';h.style.fontSize=(14+Math.random()*20)+'px';h.style.animationDuration=(4+Math.random()*3)+'s';
+  document.body.appendChild(h);setTimeout(()=>h.remove(),7500);
+}
+button.addEventListener('click',openSurprise);
+gift.addEventListener('click',openSurprise);
+gift.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openSurprise();}});
+</script>
+</body>
+</html>
